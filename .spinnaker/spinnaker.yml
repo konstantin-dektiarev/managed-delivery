@@ -1,0 +1,8 @@
+name: spin-md-test
+application: testmanaged
+artifacts: []
+environments: 
+  - name: testing
+    constraints: []
+    notifications: []
+    resources: []
