@@ -1,8 +1,10 @@
 name: managed-delivery
 application: testmanaged
+serviceAccount: sekret-service-account@spinnaker-test.net
+hasManagedResources: true
 artifacts: []
 environments: 
-- name: testing
-  constraints: []
-  notifications: []
-  resources: []
+  - name: testing
+    constraints: []
+    notifications: []
+    resources: []
