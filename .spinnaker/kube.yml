@@ -8,7 +8,8 @@ environments:
       account: my-k8s-account
       regions: []
     resources:
-      - kind: k8s/resource@v1
+      - &service
+        kind: k8s/resource@v1
         metadata:
           account: my-k8s-account
         spec:
@@ -27,7 +28,8 @@ environments:
               targetPort: 8080
             selector:
               app: hello-kubernetes
-      - kind: k8s/resource@v1
+      - &deployment
+        kind: k8s/resource@v1
         metadata:
           account: my-k8s-account
         spec:
