@@ -8,7 +8,6 @@ environments:
       account: my-k8s-account
       regions: []
     resources:
-      - &deployment
         kind: k8s/resource@v1
         spec:
           apiVersion: apps/v1
