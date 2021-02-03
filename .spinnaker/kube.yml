@@ -14,8 +14,8 @@ environments:
         apiVersion: v1
         kind: Service
         metadata:
-          name: spin-summit
-          namespace: default
+          name: managed-delivery
+          namespace: engprod-dev
           annotations:
             moniker.spinnaker.io/application: testmanaged
         spec:
@@ -32,8 +32,8 @@ environments:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
-          name: spin-summit
-          namespace: default
+          name: managed-delivery
+          namespace: engprod-dev
           annotations:
             moniker.spinnaker.io/application: testmanaged
         spec:
