@@ -1,11 +1,7 @@
 name: kube
 application: testmanaged
 serviceAccount: sekret-service-account@spinnaker-test.net
-artifacts:
-  - name: nimak/helloworld
-    type: docker
-    reference: my-docker-artifact
-    tagVersionStrategy: semver-tag
+artifacts: []
 environments:
   - name: dev
     locations:
