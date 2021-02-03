@@ -10,8 +10,6 @@ environments:
     resources:
       - &deployment
         kind: k8s/resource@v1
-        metadata:
-          account: my-k8s-account
         spec:
           apiVersion: apps/v1
           kind: Deployment
