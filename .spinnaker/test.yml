@@ -12,7 +12,7 @@ environments:
       kind: k8s/resource@v1
       metadata:
         application: managed2
-      template:
+      spec:
         apiVersion: v1
         kind: Service
         metadata:
@@ -30,7 +30,7 @@ environments:
       kind: k8s/resource@v1
       metadata:
         application: managed2
-      template:
+      spec:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
