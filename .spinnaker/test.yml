@@ -22,7 +22,7 @@ environments:
             annotations:
               moniker.spinnaker.io/application: managed2
           spec:
-            replicas: 3
+            replicas: 1
             selector:
               matchLabels:
                 app: hello-v2
