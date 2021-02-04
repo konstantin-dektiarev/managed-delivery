@@ -7,47 +7,28 @@ environments:
     locations:
       account: my-k8s-account
       regions: []
-    resources:
-    - &service
-      kind: k8s/resource@v1
+    metadata:
+      application: managed2
+    template:
+      apiVersion: apps/v1
+      kind: Deployment
       metadata:
-        application: managed2
+        name: managed-v2
+        namespace: engprod-dev
+        annotations:
+          moniker.spinnaker.io/application: testmanaged
       spec:
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: managed-v2
-          namespace: engprod-dev
-        spec:
-          type: LoadBalancer
-          externalTrafficPolicy: Cluster
-          ports:
-          - port: 80
-            targetPort: 8080
-          selector:
+        replicas: 1
+        selector:
+          matchLabels:
             app: hello-v2
-    - &deployment
-      kind: k8s/resource@v1
-      metadata:
-        application: managed2
-      spec:
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: managed-v2
-          namespace: engprod-dev
-        spec:
-          replicas: 1
-          selector:
-            matchLabels:
+        template:
+          metadata:
+            labels:
               app: hello-v2
-          template:
-            metadata:
-              labels:
-                app: hello-v2
-            spec:
-              containers:
-              - name: hello-v2
-                image: paulbouwer/hello-kubernetes:1.8
-                ports:
-                - containerPort: 8080
+          spec:
+            containers:
+            - name: hello-v2
+              image: paulbouwer/hello-kubernetes:1.8
+              ports:
+              - containerPort: 8080
