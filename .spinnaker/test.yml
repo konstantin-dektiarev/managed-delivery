@@ -7,7 +7,7 @@ environments:
     locations:
       account: my-k8s-account
       regions: []
-    resources:
+    template:
     - kind: k8s/resource@v1
       metadata:
         application: managed2
