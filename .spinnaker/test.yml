@@ -10,9 +10,9 @@ environments:
     resources:
     - &deployment
       kind: k8s/resource@v1
-      metadata:
-        application: managed2
       spec:
+        metadata: 
+          application: managed2
         template:
           apiVersion: apps/v1
           kind: Deployment
