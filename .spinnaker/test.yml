@@ -16,8 +16,6 @@ environments:
         metadata:
           name: managed-v2
           namespace: engprod-dev
-          annotations:
-            moniker.spinnaker.io/application: managed2
         spec:
           type: LoadBalancer
           externalTrafficPolicy: Cluster
@@ -34,8 +32,6 @@ environments:
         metadata:
           name: managed-v2
           namespace: engprod-dev
-          annotations:
-            moniker.spinnaker.io/application: managed2
         spec:
           replicas: 1
           selector:
