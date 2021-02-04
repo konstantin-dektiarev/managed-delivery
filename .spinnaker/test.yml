@@ -8,6 +8,27 @@ environments:
       account: my-k8s-account
       regions: []
     resources:
+    - &service
+      kind: k8s/resource@v1
+      spec:
+        metadata:
+          application: managed2
+        template:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: managed-v2
+            namespace: engprod-dev
+            annotations:
+              moniker.spinnaker.io/application: testmanaged
+          spec:
+            type: LoadBalancer
+            externalTrafficPolicy: Cluster
+            ports:
+            - port: 80
+              targetPort: 8080
+            selector:
+              app: hello-v2
     - &deployment
       kind: k8s/resource@v1
       spec:
