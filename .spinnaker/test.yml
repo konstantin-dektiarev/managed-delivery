@@ -23,7 +23,7 @@ environments:
             replicas: 3
             selector:
               matchLabels:
-                app: hello
+                app: hello-v2
             template:
               metadata:
                 labels:
