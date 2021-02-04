@@ -10,7 +10,9 @@ environments:
     resources:
     - &service
       kind: k8s/resource@v1
-      spec:
+      metadata:
+        application: managed2
+      template:
         apiVersion: v1
         kind: Service
         metadata:
@@ -26,7 +28,9 @@ environments:
             app: hello-v2
     - &deployment
       kind: k8s/resource@v1
-      spec:
+      metadata:
+        application: managed2
+      template:
         apiVersion: apps/v1
         kind: Deployment
         metadata:
