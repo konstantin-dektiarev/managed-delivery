@@ -1,0 +1,53 @@
+name: v2manageddel
+application: managed2 
+serviceAccount: sekret-service-account@spinnaker-test.net
+artifacts: []
+environments:
+  - name: testing
+    locations:
+      account: my-k8s-account
+      regions: []
+    resources:
+    - &service
+      kind: k8s/resource@v1
+      spec:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: managed-v2
+          namespace: engprod-dev
+          annotations:
+            moniker.spinnaker.io/application: managed2
+        spec:
+          type: LoadBalancer
+          externalTrafficPolicy: Cluster
+          ports:
+          - port: 80
+            targetPort: 8080
+          selector:
+            app: hello-v2
+    - &deployment
+      kind: k8s/resource@v1
+      spec:
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: managed-v2
+          namespace: engprod-dev
+          annotations:
+            moniker.spinnaker.io/application: managed2
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              app: hello-v2
+          template:
+            metadata:
+              labels:
+                app: hello-v2
+            spec:
+              containers:
+              - name: hello-v2
+                image: paulbouwer/hello-kubernetes:1.8
+                ports:
+                - containerPort: 8080
